@@ -37,6 +37,10 @@ public class Main {
     private static void addBook(Scanner scanner) {
         System.out.print("Title: ");
         String title = scanner.nextLine().trim();
+        if (title.isEmpty()) {
+            System.out.println("Title cannot be empty.");
+            return;
+        }
         System.out.print("Author: ");
         String author = scanner.nextLine().trim();
         System.out.print("Year: ");
