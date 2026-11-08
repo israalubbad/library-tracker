@@ -77,6 +77,10 @@ public class Main {
     private static void searchBooks(Scanner scanner) {
         System.out.print("Enter book title to search: ");
         String title = scanner.nextLine().trim();
+        if (title.isEmpty()) {
+            System.out.println("Title cannot be empty.");
+            return;
+        }
 
         List<Book> results = BookSearch.searchByTitle(title);
 
