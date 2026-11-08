@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void printBanner() {
-        System.out.println("=== Library Tracker ===");
+        System.out.println("=== Library Tracker - Israa ===");
     }
 
     public static void main(String[] args) {
