@@ -14,6 +14,8 @@ public class Main {
         while (true) {
             System.out.println("\n1) Add book");
             System.out.println("2) List books");
+            System.out.println("3) Search books");
+            System.out.println("4) Remove book");
             System.out.println("0) Exit");
             System.out.print("Choose: ");
             String choice = scanner.nextLine().trim();
@@ -24,6 +26,12 @@ public class Main {
                     break;
                 case "2":
                     listBooks();
+                    break;
+                case "3":
+                    searchBooks(scanner);
+                    break;
+                case "4":
+                    removeBook(scanner);
                     break;
                 case "0":
                     System.out.println("Bye!");
@@ -65,4 +73,40 @@ public class Main {
             System.out.println((i + 1) + ". " + books.get(i));
         }
     }
+
+    private static void searchBooks(Scanner scanner) {
+        System.out.print("Enter book title to search: ");
+        String title = scanner.nextLine().trim();
+        if (title.isEmpty()) {
+            System.out.println("Title cannot be empty.");
+            return;
+        }
+
+        List<Book> results = BookSearch.searchByTitle(title);
+
+        if (results.isEmpty()) {
+            System.out.println("No books found.");
+        } else {
+            for (Book book : results) {
+                System.out.println(book);
+            }
+        }
+    }
+
+    private static void removeBook(Scanner scanner) {
+        System.out.print("Enter book title to remove: ");
+        String title = scanner.nextLine().trim();
+
+        if (title.isEmpty()) {
+            System.out.println("Title cannot be empty.");
+            return;
+        }
+
+        if (BookRemoval.removeByTitle(title)) {
+            System.out.println("Book removed successfully.");
+        } else {
+            System.out.println("Book not found.");
+        }
+    }
+
 }
